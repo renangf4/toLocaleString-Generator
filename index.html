@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TolocaleString</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body class="py-5">
+    <div class="container">
+        <form class="row">
+            <fieldset class="col-12 mb-5">
+                <div class="d-flex justify-content-center">
+                    <input type="text" placeholder="Date" id="date" class="form-control mr-2" style="width: 300px; max-width: 100%;">
+                    <button class="btn btn-primary js-gerar">Generate</button>
+                </div>
+                <small class="text-center d-block mt-2">If empty, get current date</small>
+            </fieldset>
+
+            <fieldset class="col-12 mb-5">
+                <div class="card text-white bg-light mb-3">
+                    <div class="card-header text-dark">
+                        <p><strong>Result:</strong> <span class="js-output"></span></p>
+                        <p class="mb-0"><strong>Code:</strong> <code class="bg-white px-2 py-2 js-output-code d-none"></code></p>
+                    </div>
+                </div>
+            </fieldset>
+    
+            <fieldset class="col-12 col-lg-6 col-xl-3 mb-3">
+                <label class="w-100" for="locales">
+                    Locales
+                    <select id="locales" class="form-control">
+                        <option value="ar-SA">ar-SA Arabic (Saudi Arabia)</option>
+                        <option value="bn-BD">bn-BD Bangla (Bangladesh)</option>
+                        <option value="bn-IN">bn-IN Bangla (India)</option>
+                        <option value="cs-CZ">cs-CZ Czech (Czech Republic)</option>
+                        <option value="da-DK">da-DK Danish (Denmark)</option>
+                        <option value="de-AT">de-AT Austrian German</option>
+                        <option value="de-CH">de-CH "Swiss" German</option>
+                        <option value="de-DE">de-DE Standard German (as spoken in Germany)</option>
+                        <option value="el-GR">el-GR Modern Greek</option>
+                        <option value="en-AU">en-AU Australian English</option>
+                        <option value="en-CA">en-CA Canadian English</option>
+                        <option value="en-GB">en-GB British English</option>
+                        <option value="en-IE">en-IE Irish English</option>
+                        <option value="en-IN">en-IN Indian English</option>
+                        <option value="en-NZ">en-NZ New Zealand English</option>
+                        <option value="en-US">en-US US English</option>
+                        <option value="en-ZA">en-ZA English (South Africa)</option>
+                        <option value="es-AR">es-AR Argentine Spanish</option>
+                        <option value="es-CL">es-CL Chilean Spanish</option>
+                        <option value="es-CO">es-CO Colombian Spanish</option>
+                        <option value="es-ES">es-ES Castilian Spanish (as spoken in Central-Northern Spain)</option>
+                        <option value="es-MX">es-MX Mexican Spanish</option>
+                        <option value="es-US">es-US American Spanish</option>
+                        <option value="fi-FI">fi-FI Finnish (Finland)</option>
+                        <option value="fr-BE">fr-BE Belgian French</option>
+                        <option value="fr-CA">fr-CA Canadian French</option>
+                        <option value="fr-CH">fr-CH "Swiss" French</option>
+                        <option value="fr-FR">fr-FR Standard French (especially in France)</option>
+                        <option value="he-IL">he-IL Hebrew (Israel)</option>
+                        <option value="hi-IN">hi-IN Hindi (India)</option>
+                        <option value="hu-HU">hu-HU Hungarian (Hungary)</option>
+                        <option value="id-ID">id-ID Indonesian (Indonesia)</option>
+                        <option value="it-CH">it-CH "Swiss" Italian</option>
+                        <option value="it-IT">it-IT Standard Italian (as spoken in Italy)</option>
+                        <option value="ja-JP">ja-JP Japanese (Japan)</option>
+                        <option value="ko-KR">ko-KR Korean (Republic of Korea)</option>
+                        <option value="nl-BE">nl-BE Belgian Dutch</option>
+                        <option value="nl-NL">nl-NL Standard Dutch (as spoken in The Netherlands)</option>
+                        <option value="no-NO">no-NO Norwegian (Norway)</option>
+                        <option value="pl-PL">pl-PL Polish (Poland)</option>
+                        <option value="pt-BR" selected>pt-BR Brazilian Portuguese</option>
+                        <option value="pt-PT">pt-PT European Portuguese (as written and spoken in Portugal)</option>
+                        <option value="ro-RO">ro-RO Romanian (Romania)</option>
+                        <option value="ru-RU">ru-RU Russian (Russian Federation)</option>
+                        <option value="sk-SK">sk-SK Slovak (Slovakia)</option>
+                        <option value="sv-SE">sv-SE Swedish (Sweden)</option>
+                        <option value="ta-IN">ta-IN Indian Tamil</option>
+                        <option value="ta-LK">ta-LK Sri Lankan Tamil</option>
+                        <option value="th-TH">th-TH Thai (Thailand)</option>
+                        <option value="tr-TR">tr-TR Turkish (Turkey)</option>
+                        <option value="zh-CN">zh-CN Mainland China, simplified characters</option>
+                        <option value="zh-HK">zh-HK Hong Kong, traditional characters</option>
+                        <option value="zh-TW">zh-TW Taiwan, traditional characters</option>
+                    </select>
+                </label>
+            </fieldset>
+    
+            <fieldset class="col-12 col-lg-6 col-xl-3 mb-3">
+                <label class="w-100" for="dateStyle">
+                    dateStyle
+                    <select id="dateStyle" class="form-control">
+                        <option value="">-</option>
+                        <option value="full">full</option>
+                        <option value="long">long</option>
+                        <option value="medium">medium</option>
+                        <option value="short">short</option>
+                    </select>
+                </label>
+            </fieldset>
+    
+            <fieldset class="col-12 col-lg-6 col-xl-3 mb-3">
+                <label class="w-100" for="timeStyle">
+                    timeStyle
+                    <select id="timeStyle" class="form-control">
+                        <option value="">-</option>
+                        <option value="full">full</option>
+                        <option value="long">long</option>
+                        <option value="medium">medium</option>
+                        <option value="short">short</option>
+                    </select>
+                </label>
+            </fieldset>
+    
+            <fieldset class="col-12 col-lg-6 col-xl-3 mb-3">
+                <label class="w-100" for="localeMatcher">
+                    localeMatcher
+                    <select id="localeMatcher" class="form-control">
+                        <option value="">-</option>
+                        <option value="best-fit">best-fit</option>
+                        <option value="lookup">lookup</option>
+                    </select>
+                </label>
+            </fieldset>
+            
+            <fieldset class="col-12 col-lg-6 col-xl-3 mb-3">
+                <label class="w-100" for="hour12">
+                    hour12
+                    <select id="hour12" class="form-control">
+                        <option value="">-</option>
+                        <option value="false">false</option>
+                        <option value="true">true</option>
+                    </select>
+                </label>
+            </fieldset>
+    
+            <fieldset class="col-12 col-lg-6 col-xl-3 mb-3">
+                <label class="w-100" for="hourCycle">
+                    hourCycle
+                    <select id="hourCycle" class="form-control">
+                        <option value="">-</option>
+                        <option value="h11">h11</option>
+                        <option value="h12">h12</option>
+                        <option value="h23">h23</option>
+                        <option value="h24">h24</option>
+                    </select>
+                </label>
+            </fieldset>
+    
+            <fieldset class="col-12 col-lg-6 col-xl-3 mb-3">
+                <label class="w-100" for="formatMatcher">
+                    formatMatcher
+                    <select id="formatMatcher" class="form-control">
+                        <option value="">-</option>
+                        <option value="best-fit">best-fit (default)</option>
+                        <option value="basic">basic</option>
+                    </select>
+                </label>
+            </fieldset>
+    
+            <fieldset class="col-12 col-lg-6 col-xl-3 mb-3">
+                <label class="w-100" for="weekday">
+                    weekday
+                    <select id="weekday" class="form-control">
+                        <option value="">-</option>
+                        <option value="long">long</option>
+                        <option value="short">short</option>
+                        <option value="narrow">narrow</option>
+                    </select>
+                </label>
+            </fieldset>
+    
+            <fieldset class="col-12 col-lg-6 col-xl-3 mb-3">
+                <label class="w-100" for="year">
+                    year
+                    <select id="year" class="form-control">
+                        <option value="">-</option>
+                        <option value="2-digit">2-digit</option>
+                        <option value="numeric">numeric</option>
+                    </select>
+                </label>
+            </fieldset>
+    
+            <fieldset class="col-12 col-lg-6 col-xl-3 mb-3">
+                <label class="w-100" for="month">
+                    month
+                    <select id="month" class="form-control">
+                        <option value="">-</option>
+                        <option value="2-digit">2-digit</option>
+                        <option value="long">long</option>
+                        <option value="narrow">narrow</option>
+                        <option value="numeric">numeric</option>
+                        <option value="short">short</option>
+                    </select>
+                </label>
+            </fieldset>
+    
+            <fieldset class="col-12 col-lg-6 col-xl-3 mb-3">
+                <label class="w-100" for="day">
+                    day
+                    <select id="day" class="form-control">
+                        <option value="">-</option>
+                        <option value="2-digit">2-digit</option>
+                        <option value="numeric">numeric</option>
+                    </select>
+                </label>
+            </fieldset>
+    
+            <fieldset class="col-12 col-lg-6 col-xl-3 mb-3">
+                <label class="w-100" for="hour">
+                    hour
+                    <select id="hour" class="form-control">
+                        <option value="">-</option>
+                        <option value="2-digit">2-digit</option>
+                        <option value="numeric">numeric</option>
+                    </select>
+                </label>
+            </fieldset>
+    
+            <fieldset class="col-12 col-lg-6 col-xl-3 mb-3">
+                <label class="w-100" for="minute">
+                    minute
+                    <select id="minute" class="form-control">
+                        <option value="">-</option>
+                        <option value="2-digit">2-digit</option>
+                        <option value="numeric">numeric</option>
+                    </select>
+                </label>
+            </fieldset>
+    
+            <fieldset class="col-12 col-lg-6 col-xl-3 mb-3">
+                <label class="w-100" for="second">
+                    second
+                    <select id="second" class="form-control">
+                        <option value="">-</option>
+                        <option value="2-digit">2-digit</option>
+                        <option value="numeric">numeric</option>
+                    </select>
+                </label>
+            </fieldset>
+    
+            <fieldset class="col-12 col-lg-6 col-xl-3 mb-3">
+                <label class="w-100" for="timeZoneName">
+                    timeZoneName
+                    <select id="timeZoneName" class="form-control">
+                        <option value="">-</option>
+                        <option value="long">long</option>
+                        <option value="short">short</option>
+                    </select>
+                </label>
+            </fieldset>
+            
+            <fieldset class="col-12 col-lg-6 col-xl-3 mb-3">
+                <label class="w-100" for="timeZone">
+                    timeZone
+                    <input type="text" id="timeZone" class="form-control">
+                </label>
+            </fieldset>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $('form').submit(function() {
+            event.preventDefault();
+
+            let optionsDate = '';
+            let optionsCode = '';
+
+            $('form select:not(#locales), form input:not(#date)').each(function() {
+                if( $(this).val() != '' )
+                    optionsDate += `"${$(this).attr('id')}": "${$(this).val()}",`;
+            });
+
+            if( optionsDate != '' ) {
+                optionsDate = '{' + optionsDate.slice(0, -1) + '}';
+
+                optionsCode = ', ' + optionsDate;
+
+                optionsDate = JSON.parse(optionsDate);
+            }
+
+            let date = $('#date').val() == '' ? new Date() : new Date($('#date').val());
+            date = date.toLocaleString($('#locales').val(), optionsDate);
+
+            optionsCode = `new Date(${$('#date').val() == '' ? '' : $('#date').val()}).toLocaleString(${$('#locales').val()}${optionsCode})`
+
+            $('.js-output').html(date);
+            $('.js-output-code').removeClass('d-none').html(optionsCode);
+        })
+    </script>
+</body>
+</html>
