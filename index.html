@@ -285,7 +285,7 @@
             let date = $('#date').val() == '' ? new Date() : new Date($('#date').val());
             date = date.toLocaleString($('#locales').val(), optionsDate);
 
-            optionsCode = `new Date(${$('#date').val() == '' ? '' : '"' + $('#date').val() + '"' }).toLocaleString("${$('#locales').val()"}${optionsCode})`
+            optionsCode = `new Date(${$('#date').val() == '' ? '' : '"' + $('#date').val() + '"' }).toLocaleString("${$('#locales').val()}"${optionsCode})`
 
             $('.js-output').html(date);
             $('.js-output-code').removeClass('d-none').html(optionsCode);
