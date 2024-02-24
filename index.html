@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>toLocaleString Generator</title>
+    <title>toLocaleString Examples Generator</title>
     <link rel="shortcut icon" href="https://moraissolucoes.com.br/wp-content/uploads/2023/05/Rectangle-1.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="description" content="Explore all options of the toLocaleString() method in JavaScript and see code examples to format dates and times according to your preference. Learn how to use toLocaleString() to display dates and times in different languages and formats. Try it now!">
+    <meta name="keywords" content="JavaScript, tolocalestring, toLocaleString(), formato de data, formato de hora, internacionalização, localização, código JavaScript, exemplos de código, date format, time format, internationalization, localization, JavaScript code, code examples">
+    <meta name="author" content="renangf4">
 </head>
 <body class="py-5">
     <div class="container">
@@ -263,34 +266,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script>
-        $('form').submit(function() {
-            event.preventDefault();
-
-            let optionsDate = '';
-            let optionsCode = '';
-
-            $('form select:not(#locales), form input:not(#date)').each(function() {
-                if( $(this).val() != '' )
-                    optionsDate += `"${$(this).attr('id')}": "${$(this).val()}",`;
-            });
-
-            if( optionsDate != '' ) {
-                optionsDate = '{' + optionsDate.slice(0, -1) + '}';
-
-                optionsCode = ', ' + optionsDate;
-
-                optionsDate = JSON.parse(optionsDate);
-            }
-
-            let date = $('#date').val() == '' ? new Date() : new Date($('#date').val());
-            date = date.toLocaleString($('#locales').val(), optionsDate);
-
-            optionsCode = `new Date(${$('#date').val() == '' ? '' : '"' + $('#date').val() + '"' }).toLocaleString("${$('#locales').val()}"${optionsCode});`
-
-            $('.js-output').html(date);
-            $('.js-output-code').removeClass('d-none').html(optionsCode);
-        })
-    </script>
+    <script src="./main.js"></script>
 </body>
 </html>
