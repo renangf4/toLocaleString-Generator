@@ -1,24 +1,24 @@
 # toLocaleString Examples Generator
 
-Este projeto é uma ferramenta interativa para explorar todas as opções do método `toLocaleString()` em JavaScript. Ele permite formatar datas e horários de acordo com diferentes idiomas e estilos.
+This project is an interactive tool to explore all options of the `toLocaleString()` method in JavaScript. It allows formatting dates and times according to different languages and styles.
 
-## Demonstração
+## Demo
 
-Você pode acessar a versão online do projeto através do GitHub Pages:
+You can access the online version of the project through GitHub Pages:
 [toLocaleString Examples Generator](https://renangf4.github.io/toLocaleString-Generator/)
 
-## Tecnologias Utilizadas
+## Technologies Used
 
 - HTML
 - CSS (Bootstrap 4)
 - JavaScript (jQuery)
 
-## Funcionalidades
+## Features
 
-- Permite inserir uma data personalizada ou utilizar a data atual.
-- Suporte para múltiplas configurações do método `toLocaleString()`.
-- Exibe o resultado formatado e o código correspondente.
+- Allows entering a custom date or using the current date.
+- Supports multiple configurations of the `toLocaleString()` method.
+- Displays the formatted result and the corresponding code.
 
-## Autor
+## Author
 
-Desenvolvido por [renangf4](https://github.com/renangf4).
+Developed by [renangf4](https://github.com/renangf4).
