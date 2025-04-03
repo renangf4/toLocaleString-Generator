@@ -26,4 +26,6 @@ $(document).ready(function () {
         $('.js-output').html(date);
         $('.js-output-code').removeClass('d-none').html(optionsCode);
     });
+
+    $(".js-gerar").click();
 });
